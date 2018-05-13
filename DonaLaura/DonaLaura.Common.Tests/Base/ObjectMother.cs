@@ -17,7 +17,7 @@ namespace DonaLaura.Common.Tests.Base
                 Name = "Creme Facial",
                 SalePrice = 10.50,
                 CostPrice = 8.50,
-                Availability = true,
+                Availability = 1,
                 Manufacture = DateTime.Now,
                 Expiration = DateTime.Now.AddDays(5)
             };
@@ -31,7 +31,7 @@ namespace DonaLaura.Common.Tests.Base
                 Name = "Cre",
                 SalePrice = 10.50,
                 CostPrice = 8.50,
-                Availability = true,
+                Availability = 1,
                 Manufacture = DateTime.Now,
                 Expiration = DateTime.Now.AddDays(5)
             };
@@ -45,7 +45,7 @@ namespace DonaLaura.Common.Tests.Base
                 Name = "Creme Teste",
                 SalePrice = 8.50,
                 CostPrice = 10.50,
-                Availability = true,
+                Availability = 1,
                 Manufacture = DateTime.Now,
                 Expiration = DateTime.Now.AddDays(5)
             };
@@ -59,7 +59,7 @@ namespace DonaLaura.Common.Tests.Base
                 Name = "Creme Facial",
                 SalePrice = 10.50,
                 CostPrice = 8.50,
-                Availability = true,
+                Availability = 1,
                 Manufacture = DateTime.Now.AddDays(5),
                 Expiration = DateTime.Now
             };
@@ -72,7 +72,7 @@ namespace DonaLaura.Common.Tests.Base
                 Name = "Creme Facial",
                 SalePrice = 10.50,
                 CostPrice = 8.50,
-                Availability = true,
+                Availability = 1,
                 Manufacture = DateTime.Now.AddDays(5),
                 Expiration = DateTime.Now
             };
@@ -83,6 +83,19 @@ namespace DonaLaura.Common.Tests.Base
             return new List<Product>
             {
                 GetProduct()
+            };
+        }
+
+        public static Product GetProductSql()
+        {
+            return new Product()
+            {
+                Name = "Creme Facial",
+                SalePrice = 10.50,
+                CostPrice = 8.50,
+                Availability = 1,
+                Manufacture = DateTime.Now,
+                Expiration = DateTime.Now.AddDays(5)
             };
         }
     }

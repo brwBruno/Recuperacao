@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DonaLaura.App.Features
+namespace DonaLaura.App.Features.Products
 {
     public class ProductService : IProductService
     {
