@@ -1,4 +1,4 @@
-﻿using DonaLaura.App.Features;
+﻿using DonaLaura.App.Features.Products;
 using DonaLaura.Common.Tests.Base;
 using DonaLaura.Domain.Exceptions;
 using DonaLaura.Domain.Features.Products;
@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DonaLaura.App.Tests.Features
+namespace DonaLaura.App.Tests.Features.Products
 {
     [TestFixture]
     public class ProductServiceTests

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DonaLaura.Domain.Tests.Features
+namespace DonaLaura.Domain.Tests.Features.Products
 {
     [TestFixture]
     public class ProductTests
