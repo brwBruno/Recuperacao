@@ -59,4 +59,10 @@
     <Folder Include="Properties" />
     <Folder Include="Tables" />
   </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\TBProduct.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="DonaLauraDB.refactorlog" />
+  </ItemGroup>
 </Project>

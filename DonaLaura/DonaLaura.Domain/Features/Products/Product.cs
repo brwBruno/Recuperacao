@@ -12,7 +12,7 @@ namespace DonaLaura.Domain.Features.Products
         public string Name { get; set; }
         public double SalePrice { get; set; }
         public double CostPrice { get; set; }
-        public bool Availability { get; set; }
+        public int Availability { get; set; }
         public DateTime Manufacture { get; set; }
         public DateTime Expiration { get; set; }
 
