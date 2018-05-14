@@ -98,5 +98,17 @@ namespace DonaLaura.Common.Tests.Base
                 Expiration = DateTime.Now.AddDays(5)
             };
         }
+
+        public static Product GetProductSqlEmptyName()
+        {
+            return new Product()
+            {
+                SalePrice = 10.50,
+                CostPrice = 8.50,
+                Availability = 1,
+                Manufacture = DateTime.Now,
+                Expiration = DateTime.Now.AddDays(5)
+            };
+        }
     }
 }
