@@ -25,6 +25,18 @@ namespace DonaLaura.Infra.Data.Features.Products
                                                 {0}DATA_FAB, 
                                                 {0}DATA_VAL)";
 
+        private string _sqlUpdate = @"UPDATE TBProduct SET NOME = {0}NOME,
+                                                         PRECO_VENDA = {0}PRECO_VENDA,
+                                                         PRECO_CUSTO = {0}PRECO_CUSTO,
+                                                         DISPONIBILIDADE = {0}DISPONIBILIDADE,
+                                                         DATA_FAB = {0}DATA_FAB,
+                                                         DATA_VAL = {0}DATA_VAL
+                                                       WHERE ID = {0}ID";
+
+        private string _sqlGet = @"SELECT * FROM TBProduct WHERE ID = {0}ID";
+        private string _sqlGetAll = @"SELECT * FROM TBProduct";
+        private string _sqlDelete = @"DELETE FROM TBProduct WHERE ID = {0}ID";
+
         public Product Add(Product product)
         {
             product.Id = Db.Add(_sqlAdd, Take(product));
@@ -34,22 +46,28 @@ namespace DonaLaura.Infra.Data.Features.Products
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            var parms = new Dictionary<string, object> { { "ID", id } };
+
+            Db.Delete(_sqlDelete, parms);
         }
 
         public Product Get(long id)
         {
-            throw new NotImplementedException();
+            var parms = new Dictionary<string, object> { { "ID", id } };
+
+            return Db.Get(_sqlGet, Make, parms);
         }
 
         public IList<Product> GetAll()
         {
-            throw new NotImplementedException();
+            return Db.GetAll(_sqlGetAll, Make);
         }
 
         public Product Update(Product product)
         {
-            throw new NotImplementedException();
+            Db.Update(_sqlUpdate, Take(product));
+
+            return product;
         }
 
         private static Func<IDataReader, Product> Make = reader =>
