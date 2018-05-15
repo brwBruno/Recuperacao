@@ -48,6 +48,10 @@
     <Compile Include="Features\Products\ProductCostBiggerSaleException.cs" />
     <Compile Include="Features\Products\ProductExpirationDateSmallerFabricationDateException.cs" />
     <Compile Include="Features\Products\ProductMinCharacterException.cs" />
+    <Compile Include="Features\Sales\Sale.cs" />
+    <Compile Include="Features\Sales\SaleEmptyClienteException.cs" />
+    <Compile Include="Features\Sales\SaleEmptyOrNullProductSaleException.cs" />
+    <Compile Include="Features\Sales\SaleEmptyOrZeroAmountException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
