@@ -168,6 +168,25 @@ namespace DonaLaura.Common.Tests.Base
             };
         }
 
+        public static Sale GetSaleSql(Product product)
+        {
+            return new Sale
+            {
+                Client = "Bruno Ribeiro",
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
+        public static Sale GetSaleSqlEmptyClient(Product product)
+        {
+            return new Sale
+            {
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
         #endregion
 
     }

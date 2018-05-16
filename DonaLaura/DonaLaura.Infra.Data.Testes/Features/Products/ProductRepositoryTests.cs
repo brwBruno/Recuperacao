@@ -28,7 +28,7 @@ namespace DonaLaura.Infra.Data.Testes.Features.Products
             _expectedProduct = new Product();
             _repository = new ProductRepository();
             _listExpectedProduct = new List<Product>();
-            ExtensionSql.SeedDb();
+            ExtensionSql.SeedDbWithoutDependence();
         }
 
         [Test]
