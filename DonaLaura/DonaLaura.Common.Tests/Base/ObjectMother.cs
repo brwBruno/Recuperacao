@@ -1,4 +1,5 @@
 ﻿using DonaLaura.Domain.Features.Products;
+using DonaLaura.Domain.Features.Sales;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace DonaLaura.Common.Tests.Base
 {
     public static partial class ObjectMother
     {
+
+        #region Product
         public static Product GetProduct()
         {
             return new Product()
@@ -110,5 +113,62 @@ namespace DonaLaura.Common.Tests.Base
                 Expiration = DateTime.Now.AddDays(5)
             };
         }
+        #endregion
+
+        #region Sale
+
+        public static Sale GetSale(Product product)
+        {
+            return new Sale
+            {
+                Id = 1,
+                Client = "Bruno Ribeiro",
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
+        public static Sale GetSaleEmptyClient(Product product)
+        {
+            return new Sale
+            {
+                Id = 1,
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
+        public static Sale GetSaleEmptyAmount(Product product)
+        {
+            return new Sale
+            {
+                Id = 1,
+                Client = "Bruno Ribeiro",
+                ProductSale = product,
+            };
+        }
+
+        public static Sale GetSaleEmptyProductSale()
+        {
+            return new Sale
+            {
+                Id = 1,
+                Client = "Bruno Ribeiro",
+                Amount = 3
+            };
+        }
+
+        public static Sale GetInvalidIdSale(Product product)
+        {
+            return new Sale
+            {
+                Client = "Bruno Ribeiro",
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
+        #endregion
+
     }
 }
