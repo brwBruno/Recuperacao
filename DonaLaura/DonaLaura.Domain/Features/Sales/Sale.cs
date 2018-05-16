@@ -20,6 +20,7 @@ namespace DonaLaura.Domain.Features.Sales
             if (String.IsNullOrEmpty(Client)) throw new SaleEmptyClienteException();
             if (Amount <= 0) throw new SaleEmptyOrZeroAmountException();
             if (ProductSale == null) throw new SaleEmptyOrNullProductSaleException();
+            if (ProductSale.Availability <= 0) throw new SaleNotAvailabilityProductException();
         }
     }
 }

@@ -37,7 +37,7 @@ namespace DonaLaura.Domain.Tests.Features.Products
 
             Action Act = () => _product.Validate();
 
-            Act.Should().Throw<ProductMinCharacterException>();
+            Act.Should().Throw<ProductInvalidOrNullNameException>();
         }
 
         [Test]

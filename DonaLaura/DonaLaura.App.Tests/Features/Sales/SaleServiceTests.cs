@@ -18,36 +18,31 @@ namespace DonaLaura.App.Tests.Features.Sales
     public class SaleServiceTests
     {
         Sale _sale;
-        Sale _expectedSale;
         ISaleService _service;
         Mock<ISaleRepository> _repository;
         Mock<Product> _product;
         IList<Sale> _listSale;
-        IList<Sale> _expectedListSale;
 
         [SetUp]
         public void SetUp()
         {
             _sale = new Sale();
-            _expectedSale = new Sale();
             _repository = new Mock<ISaleRepository>();
             _service = new SaleService(_repository.Object);
             _product = new Mock<Product>();
             _listSale = new List<Sale>();
-            _expectedListSale = new List<Sale>();
         }
 
         [Test]
         public void SaleService_Add_ShouldBeOk()
         {
+            _product.Object.Availability = 1;
             _sale = ObjectMother.GetSale(_product.Object);
-            _repository.Setup(r => r.Add(_sale)).Returns(_sale);
 
-            _expectedSale = _service.Add(_sale);
+            Action Act = () => _service.Add(_sale);
 
-            _expectedSale.Should().NotBeNull();
-            _expectedSale.Id.Should().Be(_sale.Id);
-            _expectedSale.Client.Should().Be(_sale.Client);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Add(_sale));
         }
 
         [Test]
@@ -80,20 +75,20 @@ namespace DonaLaura.App.Tests.Features.Sales
             Action Act = () => _service.Add(_sale);
 
             Act.Should().Throw<SaleEmptyOrZeroAmountException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
         public void SaleService_Update_ShoudlBeOk()
         {
+            _product.Object.Availability = 1;
             _sale = ObjectMother.GetSale(_product.Object);
             _sale.Client = "Renan Zapelini";
-            _repository.Setup(r => r.Update(_sale)).Returns(_sale);
 
-            _expectedSale = _service.Update(_sale);
+            Action Act = () => _service.Update(_sale);
 
-            _expectedSale.Should().NotBeNull();
-            _expectedSale.Id.Should().Be(_sale.Id);
-            _expectedSale.Client.Should().Be("Renan Zapelini");
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Update(_sale));
         }
 
         [Test]
@@ -126,20 +121,18 @@ namespace DonaLaura.App.Tests.Features.Sales
             Action Act = () => _service.Update(_sale);
 
             Act.Should().Throw<SaleEmptyOrZeroAmountException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
         public void SaleService_Get_ShouldBeOk()
         {
             _sale = ObjectMother.GetSale(_product.Object);
-            var id = 1;
-            _repository.Setup(r => r.Get(id)).Returns(_sale);
 
-            _expectedSale = _service.Get(_sale);
+            Action Act = () => _service.Get(_sale);
 
-            _expectedSale.Should().NotBeNull();
-            _expectedSale.Id.Should().Be(id);
-            _expectedSale.Client.Should().Be(_sale.Client);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Get(_sale.Id));
         }
 
         [Test]
@@ -150,30 +143,29 @@ namespace DonaLaura.App.Tests.Features.Sales
             Action Act = () => _service.Get(_sale);
 
             Act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
         public void SaleService_GetAll_ShouldBeOk()
         {
             _listSale.Add(ObjectMother.GetSale(_product.Object));
-            _repository.Setup(r => r.GetAll()).Returns(_listSale);
-            var id = 1;
 
-            _expectedListSale = _service.GetAll();
+            Action Act = () => _service.GetAll();
 
-            _expectedListSale.Count().Should().BeGreaterThan(0);
-            _expectedListSale.Last().Id.Should().Be(id);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.GetAll());
         }
 
         [Test]
         public void SaleService_Delete_ShouldBeOk()
         {
             _sale = ObjectMother.GetSale(_product.Object);
-            _repository.Setup(r => r.Delete(_sale.Id));
 
             Action Act = () => _service.Delete(_sale);
 
             Act.Should().NotThrow();
+            _repository.Verify(r => r.Delete(_sale.Id));
         }
 
         [Test]
@@ -184,13 +176,13 @@ namespace DonaLaura.App.Tests.Features.Sales
             Action Act = () => _service.Delete(_sale);
 
             Act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [TearDown]
         public void TearDown()
         {
             _sale = null;
-            _expectedSale = null;
             _repository = null;
             _service = null;
             _product = null;

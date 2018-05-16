@@ -17,11 +17,9 @@ namespace DonaLaura.App.Tests.Features.Products
     public class ProductServiceTests
     {
         Product _product;
-        Product _expectedProduct;
         Mock<IProductRepository> _repository;
         IProductService _service;
         IList<Product> _listProduct;
-        IList<Product> _expectedListProduct;
 
         [SetUp]
         public void SetUp()
@@ -29,20 +27,18 @@ namespace DonaLaura.App.Tests.Features.Products
             _product = new Product();
             _repository = new Mock<IProductRepository>();
             _service = new ProductService(_repository.Object);
-            _expectedProduct = new Product();
             _listProduct = new List<Product>();
-            _expectedListProduct = new List<Product>();
         }
 
         [Test]
         public void ProductService_Add_ShouldBeOk()
         {
             _product = ObjectMother.GetProduct();
-            _repository.Setup(r => r.Add(_product)).Returns(_product);
 
-            _expectedProduct = _service.Add(_product);
+            Action Act = () => _service.Add(_product);
 
-            _expectedProduct.Should().Be(_product);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Add(_product));
         }
 
         [Test]
@@ -52,7 +48,8 @@ namespace DonaLaura.App.Tests.Features.Products
 
             Action Act = () => _service.Add(_product);
 
-            Act.Should().Throw<ProductMinCharacterException>();
+            Act.Should().Throw<ProductInvalidOrNullNameException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -63,6 +60,7 @@ namespace DonaLaura.App.Tests.Features.Products
             Action Act = () => _service.Add(_product);
 
             Act.Should().Throw<ProductCostBiggerSaleException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -73,18 +71,18 @@ namespace DonaLaura.App.Tests.Features.Products
             Action Act = () => _service.Add(_product);
 
             Act.Should().Throw<ProductExpirationDateSmallerFabricationDateException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
         public void ProductService_Update_ShouldBeOk()
         {
             _product = ObjectMother.GetProduct();
-            _repository.Setup(r => r.Update(_product)).Returns(_product);
 
-            _expectedProduct = _service.Update(_product);
+            Action Act = () => _service.Update(_product);
 
-            _expectedProduct.Should().Be(_product);
-            _expectedProduct.Name.Should().Be(_product.Name);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Update(_product));
         }
 
         [Test]
@@ -94,7 +92,8 @@ namespace DonaLaura.App.Tests.Features.Products
 
             Action Act = () => _service.Update(_product);
 
-            Act.Should().Throw<ProductMinCharacterException>();
+            Act.Should().Throw<ProductInvalidOrNullNameException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -105,6 +104,7 @@ namespace DonaLaura.App.Tests.Features.Products
             Action Act = () => _service.Update(_product);
 
             Act.Should().Throw<ProductCostBiggerSaleException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -115,18 +115,18 @@ namespace DonaLaura.App.Tests.Features.Products
             Action Act = () => _service.Update(_product);
 
             Act.Should().Throw<ProductExpirationDateSmallerFabricationDateException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
         public void ProductService_Get_ShouldBeOk()
         {
             _product = ObjectMother.GetProduct();
-            _repository.Setup(r => r.Get(_product.Id)).Returns(_product);
 
-            _expectedProduct = _service.Get(_product);
+            Action Act = () => _service.Get(_product);
 
-            _expectedProduct.Id.Should().Be(_product.Id);
-            _expectedProduct.Name.Should().Be(_product.Name);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.Get(_product.Id));
         }
 
         [Test]
@@ -167,18 +167,20 @@ namespace DonaLaura.App.Tests.Features.Products
         public void ProductService_GetAll_ShouldBeOk()
         {
             _listProduct = ObjectMother.GetListPorduct();
-            _repository.Setup(r => r.GetAll()).Returns(_listProduct);
 
-            _expectedListProduct = _service.GetAll();
+            Action Act = () => _service.GetAll();
 
-            _expectedListProduct.Count().Should().BeGreaterThan(0);
+            Act.Should().NotThrow();
+            _repository.Verify(r => r.GetAll());
         }
 
         [TearDown]
         public void TearDown()
         {
             _product = null;
+            _repository = null;
             _service = null;
+            _listProduct = null;
         }
         
     }

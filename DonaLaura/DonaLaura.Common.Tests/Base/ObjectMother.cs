@@ -31,7 +31,6 @@ namespace DonaLaura.Common.Tests.Base
             return new Product()
             {
                 Id = 1,
-                Name = "Cre",
                 SalePrice = 10.50,
                 CostPrice = 8.50,
                 Availability = 1,
