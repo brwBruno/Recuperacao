@@ -30,7 +30,7 @@ namespace DonaLaura.Integration.Tests
             _product = new Product();
             _expectedProduct = new Product();
             _listExpectedProduct = new List<Product>();
-            ExtensionSql.SeedDb();
+            ExtensionSql.SeedDbWithoutDependence();
         }
 
         [Test]
