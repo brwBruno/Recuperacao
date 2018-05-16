@@ -48,6 +48,8 @@
     <Compile Include="Features\Products\ProductCostBiggerSaleException.cs" />
     <Compile Include="Features\Products\ProductExpirationDateSmallerFabricationDateException.cs" />
     <Compile Include="Features\Products\ProductMinCharacterException.cs" />
+    <Compile Include="Features\Sales\ISaleRepository.cs" />
+    <Compile Include="Features\Sales\ISaleService.cs" />
     <Compile Include="Features\Sales\Sale.cs" />
     <Compile Include="Features\Sales\SaleEmptyClienteException.cs" />
     <Compile Include="Features\Sales\SaleEmptyOrNullProductSaleException.cs" />

@@ -158,6 +158,16 @@ namespace DonaLaura.Common.Tests.Base
             };
         }
 
+        public static Sale GetInvalidIdSale(Product product)
+        {
+            return new Sale
+            {
+                Client = "Bruno Ribeiro",
+                ProductSale = product,
+                Amount = 3
+            };
+        }
+
         #endregion
 
     }
