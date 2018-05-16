@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DonaLaura.Domain.Features.Products
 {
-    public class ProductMinCharacterException : BusinessException
+    public class ProductInvalidOrNullNameException : BusinessException
     {
-        public ProductMinCharacterException() : base("O Nome deve ter no minimo 4 caracteres")
+        public ProductInvalidOrNullNameException() : base("O Nome deve ter no minimo 4 caracteres")
         {
             
         }

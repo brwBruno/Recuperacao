@@ -18,7 +18,7 @@ namespace DonaLaura.Domain.Features.Products
 
         public void Validate()
         {
-            if (Name.Length < 4) throw new ProductMinCharacterException();
+            if (String.IsNullOrEmpty(Name)) throw new ProductInvalidOrNullNameException();
             if (CostPrice >= SalePrice) throw new ProductCostBiggerSaleException();
             if (Manufacture >= Expiration) throw new ProductExpirationDateSmallerFabricationDateException();
         }

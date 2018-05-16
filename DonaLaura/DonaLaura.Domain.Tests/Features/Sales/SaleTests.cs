@@ -31,6 +31,7 @@ namespace DonaLaura.Domain.Tests.Features.Sales
             _productSale.Object.Id = 1;
             _productSale.Object.CostPrice = 2;
             _productSale.Object.SalePrice = 5;
+            _productSale.Object.Availability = 1;
             _sale = ObjectMother.GetSale(_productSale.Object);
             var profit = 9;
             _sale.Validate();
@@ -68,6 +69,17 @@ namespace DonaLaura.Domain.Tests.Features.Sales
             Action Act = () => _sale.Validate();
 
             Act.Should().Throw<SaleEmptyOrNullProductSaleException>();
+        }
+
+        [Test]
+        public void Sale_UnavailableSale_ShouldFail()
+        {
+            _sale = ObjectMother.GetSale(_productSale.Object);
+            _productSale.Object.Availability = 0;
+
+            Action Act = () => _sale.Validate();
+
+            Act.Should().Throw<SaleNotAvailabilityProductException>();
         }
 
         [TearDown]
