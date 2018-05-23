@@ -43,6 +43,7 @@
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\InvalidIdException.cs" />
     <Compile Include="Features\Books\Book.cs" />
     <Compile Include="Features\Books\BookAuthorMinCaractersException.cs" />
     <Compile Include="Features\Books\BookInvalidVolumeException.cs" />

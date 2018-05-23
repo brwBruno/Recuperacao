@@ -1,5 +1,6 @@
 ﻿using DonaRosangela.App.Features.Books;
 using DonaRosangela.Common.Tests.Base;
+using DonaRosangela.Domain.Exceptions;
 using DonaRosangela.Domain.Features.Books;
 using FluentAssertions;
 using Moq;
@@ -43,6 +44,54 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
+        public void BookService_AddInvalidTitle_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Title = "";
+
+            Action act = () => _service.Add(_book);
+
+            act.Should().Throw<BookTitleMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_AddInvalidAuthor_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Author = "";
+
+            Action act = () => _service.Add(_book);
+
+            act.Should().Throw<BookAuthorMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_AddInvalidTheme_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Theme = "";
+
+            Action act = () => _service.Add(_book);
+
+            act.Should().Throw<BookThemeMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_AddInvalidVolume_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Volume = 0;
+
+            Action act = () => _service.Add(_book);
+
+            act.Should().Throw<BookInvalidVolumeException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
         public void BookService_Get_ShouldBeOk()
         {
             _book = ObjectMother.GetBook();
@@ -53,6 +102,18 @@ namespace DonaRosangela.App.Tests.Features.Books
             _expectedBook.Should().NotBeNull();
             _expectedBook.Id.Should().Be(1);
             _repository.Verify(r => r.Get(_book.Id));
+        }
+
+        [Test]
+        public void BookService_GetInvalidId_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Id = 0;
+
+            Action act = () => _service.Get(_book);
+
+            act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -68,6 +129,54 @@ namespace DonaRosangela.App.Tests.Features.Books
             _expectedBook.Id.Should().Be(1);
             _expectedBook.Title.Should().Be("Senhor dos Aneis");
             _repository.Verify(r => r.Update(_book));
+        }
+
+        [Test]
+        public void BookService_UpdateInvalidTitle_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Title = "";
+
+            Action act = () => _service.Update(_book);
+
+            act.Should().Throw<BookTitleMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_UpdateInvalidAuthor_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Author = "";
+
+            Action act = () => _service.Update(_book);
+
+            act.Should().Throw<BookAuthorMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_UpdateInvalidTheme_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Theme = "";
+
+            Action act = () => _service.Update(_book);
+
+            act.Should().Throw<BookThemeMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void BookService_UpdateInvalidVolume_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Volume = 0;
+
+            Action act = () => _service.Update(_book);
+
+            act.Should().Throw<BookInvalidVolumeException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -96,6 +205,18 @@ namespace DonaRosangela.App.Tests.Features.Books
 
             _expectedBook.Should().BeNull();
             _repository.Verify(r => r.Delete(_book.Id));
+        }
+
+        [Test]
+        public void BookService_DeleteInvalidId_ShouldFail()
+        {
+            _book = ObjectMother.GetBook();
+            _book.Id = 0;
+
+            Action act = () => _service.Delete(_book);
+
+            act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
     }
 }
