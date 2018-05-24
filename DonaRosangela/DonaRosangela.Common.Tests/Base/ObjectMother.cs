@@ -22,5 +22,18 @@ namespace DonaRosangela.Common.Tests.Base
                 Availability = true
             };
         }
+
+        public static Book GetBookSQL()
+        {
+            return new Book
+            {
+                Title = "A Volta dos que nao Foram",
+                Theme = "Ficção",
+                Author = "Renan Zapelini",
+                Volume = 1,
+                Publication = DateTime.Now.AddYears(-30),
+                Availability = true
+            };
+        }
     }
 }

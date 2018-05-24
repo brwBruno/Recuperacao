@@ -40,7 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Features\Books\BookRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DonaRosangela.Domain\DonaRosangela.Domain.csproj">
+      <Project>{E4A50344-DD3E-48B7-98F7-D3E7833C1D41}</Project>
+      <Name>DonaRosangela.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DonaRosangela.Infra\DonaRosangela.Infra.csproj">
+      <Project>{F7FE7E52-B784-48C6-8E84-FD7E381D1D1D}</Project>
+      <Name>DonaRosangela.Infra</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
