@@ -10,7 +10,7 @@
   "ExcludeDirectories": "",
   "Filters": "+[*]*",
   "IsIncludingSolutionAssemblies": true,
-  "IsExcludingTestAssemblies": false,
+  "IsExcludingTestAssemblies": true,
   "IsCoveringByTest": false,
   "IsMergingByHash": true,
   "IsSkippingAutoProps": true,
