@@ -50,6 +50,16 @@ namespace DonaRosangela.Infra.Data.Tests.Features.Books
         }
 
         [Test]
+        public void BooKRepository_GetInvaidId_ShouldBeNull()
+        {
+            _book.Id = 2;
+
+            _expectedBook = _repository.Get(_book.Id);
+
+            _expectedBook.Should().BeNull();
+        }
+
+        [Test]
         public void BookRepository_GetAll_ShouldBeOk()
         {
             var listBookExpected = _repository.GetAll();
@@ -69,6 +79,17 @@ namespace DonaRosangela.Infra.Data.Tests.Features.Books
 
             _expectedBook.Should().NotBeNull();
             _expectedBook.Title.Should().Be("Alterado");
+        }
+
+        [Test]
+        public void BookRepository_UpdateInvalidId_ShouldBeNull()
+        {
+            _book = ObjectMother.GetBookSQL();
+            _book.Id = 2;
+
+            _expectedBook = _repository.Update(_book);
+
+            _expectedBook.Should().BeNull();
         }
 
         [Test]
