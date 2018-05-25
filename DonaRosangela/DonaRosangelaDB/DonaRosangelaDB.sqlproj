@@ -61,5 +61,6 @@
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\TBBook.sql" />
+    <Build Include="Tables\TBLoan.sql" />
   </ItemGroup>
 </Project>
