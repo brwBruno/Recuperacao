@@ -49,6 +49,8 @@
     <Compile Include="Features\Books\BookTitleMinCaractersException.cs" />
     <Compile Include="Features\Books\IBookRepository.cs" />
     <Compile Include="Features\Books\IBookService.cs" />
+    <Compile Include="Features\Loans\ILoanRepository.cs" />
+    <Compile Include="Features\Loans\ILoanService.cs" />
     <Compile Include="Features\Loans\Loan.cs" />
     <Compile Include="Features\Loans\LoanClientMinCaractersException.cs" />
     <Compile Include="Features\Loans\LoanInvalidDevolutionException.cs" />
