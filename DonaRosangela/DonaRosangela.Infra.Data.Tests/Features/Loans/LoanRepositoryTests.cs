@@ -55,12 +55,60 @@ namespace DonaRosangela.Infra.Data.Tests.Features.Loans
         }
 
         [Test]
+        public void LoanRepository_GetInvalidId_ShouldBeNull()
+        {
+            _book.Id = 3;
+
+            _expectedLoan = _repository.Get(_loan.Id);
+
+            _expectedLoan.Should().BeNull();
+        }
+
+        [Test]
         public void LoanRepository_GetAll_ShouldBeOk()
         {
             var listExpectedLoan = _repository.GetAll();
 
             listExpectedLoan.Should().NotBeNull();
             listExpectedLoan.Last().Id.Should().Be(1);
+        }
+
+        [Test]
+        public void LoanRepository_Update_ShouldBeOk()
+        {
+            _book.Id = 1;
+            _loan = ObjectMother.GetLoanSQL(_book);
+            _loan.Id = 1;
+            _loan.Client = "Alterado";
+
+            _expectedLoan = _repository.Update(_loan);
+
+            _expectedLoan.Should().NotBeNull();
+            _expectedLoan.Id.Should().Be(1);
+            _expectedLoan.Client.Should().Be("Alterado");
+        }
+
+        [Test]
+        public void LoanRepository_UpdateInvalidId_ShouldBeNull()
+        {
+            _book.Id = 1;
+            _loan = ObjectMother.GetLoanSQL(_book);
+            _loan.Id = 2;
+
+            _expectedLoan = _repository.Get(_loan.Id);
+
+            _expectedLoan.Should().BeNull();
+        }
+
+        [Test]
+        public void LoanRepository_Delete_ShouldBeOk()
+        {
+            _loan.Id = 1;
+
+            _repository.Delete(_loan.Id);
+            _expectedLoan = _repository.Get(_loan.Id);
+
+            _expectedLoan.Should().BeNull();
         }
     }
 }

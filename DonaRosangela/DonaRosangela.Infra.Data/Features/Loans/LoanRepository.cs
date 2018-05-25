@@ -22,7 +22,9 @@ namespace DonaRosangela.Infra.Data.Features.Loans
 
         public void Delete(long id)
         {
-            throw new NotImplementedException();
+            const string sqlDelete = @"DELETE FROM TBLoan WHERE Id = {0}Id";
+            var parms = new Dictionary<string, object> { { "Id", id } };
+            Db.Delete(sqlDelete, parms);
         }
 
         public Loan Get(long id)
@@ -40,7 +42,10 @@ namespace DonaRosangela.Infra.Data.Features.Loans
 
         public Loan Update(Loan loan)
         {
-            throw new NotImplementedException();
+            const string sqlUpdate = @"UPDATE TBLoan SET Client = {0}Client, Book_Id = {0}Book_Id, Devolution = {0}Devolution
+                                        WHERE Id = {0}Id";
+            Db.Update(sqlUpdate, Take(loan));
+            return Get(loan.Id);
         }
 
         private Dictionary<string, object> Take(Loan loan)
