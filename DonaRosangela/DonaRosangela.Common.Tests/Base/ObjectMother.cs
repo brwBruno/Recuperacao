@@ -57,5 +57,27 @@ namespace DonaRosangela.Common.Tests.Base
                 Devolution = DateTime.Now.AddDays(3)
             };
         }
+
+        public static Loan GetLoanInvalidClient(Book book)
+        {
+            return new Loan
+            {
+                Id = 1,
+                Client = "",
+                LoanBook = book,
+                Devolution = DateTime.Now.AddDays(3)
+            };
+        }
+
+        public static Loan GetLoanInvalidDevolution(Book book)
+        {
+            return new Loan
+            {
+                Id = 1,
+                Client = "Bruno Ribeiro",
+                LoanBook = book,
+                Devolution = DateTime.Now.AddDays(-3)
+            };
+        }
     }
 }
