@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Contracts\IRepository.cs" />
-    <Compile Include="Contracts\IService.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\InvalidIdException.cs" />
     <Compile Include="Features\Books\Book.cs" />
@@ -51,6 +49,10 @@
     <Compile Include="Features\Books\BookTitleMinCaractersException.cs" />
     <Compile Include="Features\Books\IBookRepository.cs" />
     <Compile Include="Features\Books\IBookService.cs" />
+    <Compile Include="Features\Loans\Loan.cs" />
+    <Compile Include="Features\Loans\LoanClientMinCaractersException.cs" />
+    <Compile Include="Features\Loans\LoanInvalidDevolutionException.cs" />
+    <Compile Include="Features\Loans\LoanUnavailableBookException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
