@@ -45,8 +45,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         {
             _book.Object.Id = 1;
             _book.Object.Availability = true;
-            _loan = ObjectMother.GetLoan(_book.Object);
-            _loan.Client = "";
+            _loan = ObjectMother.GetLoanInvalidClient(_book.Object);
 
             Action act = () => _loan.Validate();
 
@@ -58,7 +57,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         {
             _book.Object.Id = 1;
             _book.Object.Availability = true;
-            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan = ObjectMother.GetLoanInvalidDevolution(_book.Object);
             _loan.Devolution = DateTime.Now;
 
             Action act = () => _loan.Validate();
@@ -76,6 +75,18 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
             Action act = () => _loan.Validate();
 
             act.Should().Throw<LoanUnavailableBookException>();
+        }
+
+        [Test]
+        public void Loan_CalculateFine_ShouldBeOk()
+        {
+            _book.Object.Id = 1;
+            _book.Object.Availability = false;
+            _loan = ObjectMother.GetLoanInvalidDevolution(_book.Object);
+
+            var resultExpected = _loan.CalculateFine();
+
+            resultExpected.Should().Be(7.50);
         }
     }
 }

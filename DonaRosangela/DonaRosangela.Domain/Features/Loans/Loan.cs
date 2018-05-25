@@ -20,5 +20,11 @@ namespace DonaRosangela.Domain.Features.Loans
             if ((Devolution.Day - DateTime.Now.Day) < 1) throw new LoanInvalidDevolutionException();
             if (LoanBook.Availability == false) throw new LoanUnavailableBookException();
         }
+
+        public double CalculateFine()
+        {
+            if (DateTime.Now.Day > Devolution.Day) return (DateTime.Now.Day - Devolution.Day) * 2.50;
+            else return 0;
+        }
     }
 }
