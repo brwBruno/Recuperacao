@@ -44,8 +44,8 @@ namespace DonaRosangela.Common.Tests.Base
                 Id = 1,
                 Client = "Bruno Ribeiro",
                 LoanBook = book,
-                Devolution = DateTime.Now.AddDays(3);
-            }
+                Devolution = DateTime.Now.AddDays(3)
+            };
         }
     }
 }

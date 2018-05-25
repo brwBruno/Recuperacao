@@ -14,6 +14,11 @@ namespace DonaRosangela.Domain.Features.Loans
         public Book LoanBook { get; set; }
         public DateTime Devolution { get; set; }
 
-        public void Validate() { }
+        public void Validate()
+        {
+            if (Client.Length < 4) throw new LoanClientMinCaractersException();
+            if ((Devolution.Day - DateTime.Now.Day) < 1) throw new LoanInvalidDevolutionException();
+            if (LoanBook.Availability == false) throw new LoanUnavailableBookException();
+        }
     }
 }

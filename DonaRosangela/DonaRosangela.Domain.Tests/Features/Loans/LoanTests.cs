@@ -31,12 +31,51 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         public void Loan_CreateValid_ShouldBeOk()
         {
             _book.Object.Id = 1;
+            _book.Object.Availability = true;
             _loan = ObjectMother.GetLoan(_book.Object);
 
             _loan.Validate();
 
             _loan.Id.Should().Be(1);
             _loan.LoanBook.Should().NotBeNull();
+        }
+
+        [Test]
+        public void Loan_CreateInvalidClient_ShouldFail()
+        {
+            _book.Object.Id = 1;
+            _book.Object.Availability = true;
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Client = "";
+
+            Action act = () => _loan.Validate();
+
+            act.Should().Throw<LoanClientMinCaractersException>();
+        }
+
+        [Test]
+        public void Loan_CreateInvalidDevolution_ShouldFail()
+        {
+            _book.Object.Id = 1;
+            _book.Object.Availability = true;
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Devolution = DateTime.Now;
+
+            Action act = () => _loan.Validate();
+
+            act.Should().Throw<LoanInvalidDevolutionException>();
+        }
+
+        [Test]
+        public void Loan_CreateUnavailableBook_ShouldFail()
+        {
+            _book.Object.Id = 1;
+            _book.Object.Availability = false;
+            _loan = ObjectMother.GetLoan(_book.Object);
+
+            Action act = () => _loan.Validate();
+
+            act.Should().Throw<LoanUnavailableBookException>();
         }
     }
 }
