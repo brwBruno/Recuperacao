@@ -24,7 +24,7 @@ namespace DonaRosangela.Infra.Data.Tests.Features.Books
             _book = new Book();
             _expectedBook = new Book();
             _repository = new BookRepository();
-            BaseSql.SeedDb();
+            BaseSql.SeedDbTBBook();
         }
 
         [Test]
