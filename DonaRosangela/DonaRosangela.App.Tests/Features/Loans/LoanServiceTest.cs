@@ -1,5 +1,6 @@
 ﻿using DonaRosangela.App.Features.Loans;
 using DonaRosangela.Common.Tests.Base;
+using DonaRosangela.Domain.Exceptions;
 using DonaRosangela.Domain.Features.Books;
 using DonaRosangela.Domain.Features.Loans;
 using FluentAssertions;
@@ -48,6 +49,42 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
+        public void LoanServie_AddInvalidClient_ShouldFail()
+        {
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Client = "";
+
+            Action act = () => _service.Add(_loan);
+
+            act.Should().Throw<LoanClientMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void LoanService_AddInvalidDevolution_ShouldFail()
+        {
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Devolution = DateTime.Now;
+
+            Action act = () => _service.Add(_loan);
+
+            act.Should().Throw<LoanInvalidDevolutionException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void LoanService_AddUnavailableBook_ShouldFail()
+        {
+            _book.Object.Availability = false;
+            _loan = ObjectMother.GetLoan(_book.Object);
+
+            Action act = () => _service.Add(_loan);
+
+            act.Should().Throw<LoanUnavailableBookException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
         public void LoanService_Get_ShouldBeOk()
         {
             _loan = ObjectMother.GetLoan(_book.Object);
@@ -58,6 +95,17 @@ namespace DonaRosangela.App.Tests.Features.Loans
             _expectedLoan.Should().NotBeNull();
             _expectedLoan.Id.Should().Be(1);
             _repository.Verify(rp => rp.Get(_loan.Id));
+        }
+
+        [Test]
+        public void LoanService_GetInvalidId_ShouldFail()
+        {
+            _loan.Id = 0;
+
+            Action act = () => _service.Get(_loan);
+
+            act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
 
         [Test]
@@ -93,6 +141,53 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
+        public void LoanServie_UpdateInvalidClient_ShouldFail()
+        {
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Client = "";
+
+            Action act = () => _service.Update(_loan);
+
+            act.Should().Throw<LoanClientMinCaractersException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void LoanService_UpdateInvalidDevolution_ShouldFail()
+        {
+            _loan = ObjectMother.GetLoan(_book.Object);
+            _loan.Devolution = DateTime.Now;
+
+            Action act = () => _service.Update(_loan);
+
+            act.Should().Throw<LoanInvalidDevolutionException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void LoanService_UpdateUnavailableBook_ShouldFail()
+        {
+            _book.Object.Availability = false;
+            _loan = ObjectMother.GetLoan(_book.Object);
+
+            Action act = () => _service.Update(_loan);
+
+            act.Should().Throw<LoanUnavailableBookException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
+        public void LoanService_UpdateInvalidId_ShouldFail()
+        {
+            _loan.Id = 0;
+
+            Action act = () => _service.Update(_loan);
+
+            act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
+        }
+
+        [Test]
         public void LoanService_Delete_ShouldBeOk()
         {
             _book.Object.Id = 1;
@@ -106,6 +201,17 @@ namespace DonaRosangela.App.Tests.Features.Loans
 
             _expectedLoan.Should().BeNull();
             _repository.Verify(rp => rp.Delete(_loan.Id));
+        }
+
+        [Test]
+        public void LoanService_DeleteInvalidId_ShouldFail()
+        {
+            _loan.Id = 0;
+
+            Action act = () => _service.Delete(_loan);
+
+            act.Should().Throw<InvalidIdException>();
+            _repository.VerifyNoOtherCalls();
         }
     }
 }
