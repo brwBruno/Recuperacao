@@ -17,27 +17,27 @@ namespace DonaRosangela.App.Features.Loans
 
         public Loan Add(Loan loan)
         {
-            throw new NotImplementedException();
+            return _repository.Add(loan);
         }
 
         public void Delete(Loan loan)
         {
-            throw new NotImplementedException();
+            _repository.Delete(loan.Id);
         }
 
         public Loan Get(Loan loan)
         {
-            throw new NotImplementedException();
+            return _repository.Get(loan.Id);
         }
 
         public IList<Loan> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public Loan Update(Loan loan)
         {
-            throw new NotImplementedException();
+            return _repository.Update(loan);
         }
     }
 }
