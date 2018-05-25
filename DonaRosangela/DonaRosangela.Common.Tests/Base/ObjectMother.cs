@@ -47,5 +47,15 @@ namespace DonaRosangela.Common.Tests.Base
                 Devolution = DateTime.Now.AddDays(3)
             };
         }
+
+        public static Loan GetLoanSQL(Book book)
+        {
+            return new Loan
+            {
+                Client = "Bruno Ribeiro",
+                LoanBook = book,
+                Devolution = DateTime.Now.AddDays(3)
+            };
+        }
     }
 }

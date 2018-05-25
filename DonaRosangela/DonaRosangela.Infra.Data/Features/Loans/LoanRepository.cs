@@ -1,5 +1,6 @@
 ﻿using DonaRosangela.Domain.Features.Books;
 using DonaRosangela.Domain.Features.Loans;
+using DonaRosangela.Infra.Base;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -13,7 +14,10 @@ namespace DonaRosangela.Infra.Data.Features.Loans
     {
         public Loan Add(Loan loan)
         {
-            throw new NotImplementedException();
+            const string addSql = @"INSERT INTO TBLoan (Client, Book_Id, Devolution)
+                                VALUES ({0}Client, {0}Book_Id, {0}Devolution)";
+            loan.Id = Db.Add(addSql, Take(loan));
+            return loan;
         }
 
         public void Delete(long id)
@@ -23,12 +27,15 @@ namespace DonaRosangela.Infra.Data.Features.Loans
 
         public Loan Get(long id)
         {
-            throw new NotImplementedException();
+            const string getSql = @"SELECT * FROM TBLoan WHERE Id = {0}Id";
+            var parms = new Dictionary<string, object> { { "Id", id } };
+            return Db.Get(getSql, Make, parms);
         }
 
         public IList<Loan> GetAll()
         {
-            throw new NotImplementedException();
+            const string getAllSql = @"SELECT * FROM TBLoan";
+            return Db.GetAll(getAllSql, Make);
         }
 
         public Loan Update(Loan loan)
@@ -42,7 +49,7 @@ namespace DonaRosangela.Infra.Data.Features.Loans
             {
                 { "Id", loan.Id },
                 { "Client", loan.Client },
-                { "Book_Id", loan.LoanBook },
+                { "Book_Id", loan.LoanBook.Id },
                 { "Devolution", loan.Devolution }
             };
         }
