@@ -9,10 +9,11 @@ namespace DonaRosangela.Domain.Features.Loans
 {
     public class Loan
     {
+        public long Id { get; set; }
         public string Client { get; set; }
         public Book LoanBook { get; set; }
         public DateTime Devolution { get; set; }
 
-        void Validade() { }
+        public void Validate() { }
     }
 }

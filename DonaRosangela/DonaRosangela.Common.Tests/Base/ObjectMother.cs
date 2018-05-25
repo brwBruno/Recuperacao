@@ -1,4 +1,5 @@
 ﻿using DonaRosangela.Domain.Features.Books;
+using DonaRosangela.Domain.Features.Loans;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +35,17 @@ namespace DonaRosangela.Common.Tests.Base
                 Publication = DateTime.Now.AddYears(-30),
                 Availability = true
             };
+        }
+
+        public static Loan GetLoan(Book book)
+        {
+            return new Loan
+            {
+                Id = 1,
+                Client = "Bruno Ribeiro",
+                LoanBook = book,
+                Devolution = DateTime.Now.AddDays(3);
+            }
         }
     }
 }
