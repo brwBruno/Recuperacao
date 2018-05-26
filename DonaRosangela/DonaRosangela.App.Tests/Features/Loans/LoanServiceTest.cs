@@ -49,7 +49,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanServie_AddInvalidClient_ShouldFail()
+        public void LoanServie_AddInvalidClient_ShouldBeException()
         {
             _loan = ObjectMother.GetLoan(_book.Object);
             _loan.Client = "";
@@ -61,7 +61,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_AddInvalidDevolution_ShouldFail()
+        public void LoanService_AddInvalidDevolution_ShouldBeException()
         {
             _loan = ObjectMother.GetLoan(_book.Object);
             _loan.Devolution = DateTime.Now;
@@ -73,7 +73,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_AddUnavailableBook_ShouldFail()
+        public void LoanService_AddUnavailableBook_ShouldBeException()
         {
             _book.Object.Availability = false;
             _loan = ObjectMother.GetLoan(_book.Object);
@@ -98,7 +98,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_GetInvalidId_ShouldFail()
+        public void LoanService_GetInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 
@@ -141,7 +141,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanServie_UpdateInvalidClient_ShouldFail()
+        public void LoanServie_UpdateInvalidClient_ShouldBeException()
         {
             _loan = ObjectMother.GetLoan(_book.Object);
             _loan.Client = "";
@@ -153,7 +153,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_UpdateInvalidDevolution_ShouldFail()
+        public void LoanService_UpdateInvalidDevolution_ShouldBeException()
         {
             _loan = ObjectMother.GetLoan(_book.Object);
             _loan.Devolution = DateTime.Now;
@@ -165,7 +165,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_UpdateUnavailableBook_ShouldFail()
+        public void LoanService_UpdateUnavailableBook_ShouldBeEsception()
         {
             _book.Object.Availability = false;
             _loan = ObjectMother.GetLoan(_book.Object);
@@ -177,7 +177,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_UpdateInvalidId_ShouldFail()
+        public void LoanService_UpdateInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 
@@ -204,7 +204,7 @@ namespace DonaRosangela.App.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanService_DeleteInvalidId_ShouldFail()
+        public void LoanService_DeleteInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 

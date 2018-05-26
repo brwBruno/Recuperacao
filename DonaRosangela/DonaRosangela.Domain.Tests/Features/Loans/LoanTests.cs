@@ -42,7 +42,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         }
 
         [Test]
-        public void Loan_CreateInvalidClient_ShouldException()
+        public void Loan_CreateInvalidClient_ShouldBeException()
         {
             _book.Object.Id = 1;
             _book.Object.Availability = true;
@@ -54,7 +54,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         }
 
         [Test]
-        public void Loan_CreateInvalidDevolution_ShouldException()
+        public void Loan_CreateInvalidDevolution_ShouldBeException()
         {
             _book.Object.Id = 1;
             _book.Object.Availability = true;
@@ -67,7 +67,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
         }
 
         [Test]
-        public void Loan_CreateUnavailableBook_ShouldException()
+        public void Loan_CreateUnavailableBook_ShouldBeException()
         {
             _book.Object.Id = 1;
             _book.Object.Availability = false;

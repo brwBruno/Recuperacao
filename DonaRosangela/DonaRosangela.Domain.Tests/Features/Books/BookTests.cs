@@ -32,7 +32,7 @@ namespace DonaRosangela.Domain.Tests.Features.Books
         }
 
         [Test]
-        public void Book_CreateInvalidTitle_ShouldException()
+        public void Book_CreateInvalidTitle_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Title = "abc";
@@ -43,7 +43,7 @@ namespace DonaRosangela.Domain.Tests.Features.Books
         }
 
         [Test]
-        public void Book_CreateInvalidThema_ShouldException()
+        public void Book_CreateInvalidThema_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Theme = "abc";
@@ -54,7 +54,7 @@ namespace DonaRosangela.Domain.Tests.Features.Books
         }
 
         [Test]
-        public void Book_CreateInvalidAuthor_ShouldException()
+        public void Book_CreateInvalidAuthor_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Author = "abc";
@@ -65,7 +65,7 @@ namespace DonaRosangela.Domain.Tests.Features.Books
         }
 
         [Test]
-        public void Book_CreateInvalidValume_ShouldException()
+        public void Book_CreateInvalidValume_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Volume = 0;

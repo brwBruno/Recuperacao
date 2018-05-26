@@ -44,7 +44,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_AddInvalidTitle_ShouldFail()
+        public void BookService_AddInvalidTitle_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Title = "";
@@ -56,7 +56,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_AddInvalidAuthor_ShouldFail()
+        public void BookService_AddInvalidAuthor_ShouldBeEception()
         {
             _book = ObjectMother.GetBook();
             _book.Author = "";
@@ -68,7 +68,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_AddInvalidTheme_ShouldFail()
+        public void BookService_AddInvalidTheme_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Theme = "";
@@ -80,7 +80,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_AddInvalidVolume_ShouldFail()
+        public void BookService_AddInvalidVolume_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Volume = 0;
@@ -105,7 +105,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_GetInvalidId_ShouldFail()
+        public void BookService_GetInvalidId_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Id = 0;
@@ -132,7 +132,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_UpdateInvalidTitle_ShouldFail()
+        public void BookService_UpdateInvalidTitle_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Title = "";
@@ -144,7 +144,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_UpdateInvalidAuthor_ShouldFail()
+        public void BookService_UpdateInvalidAuthor_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Author = "";
@@ -156,7 +156,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_UpdateInvalidTheme_ShouldFail()
+        public void BookService_UpdateInvalidTheme_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Theme = "";
@@ -168,7 +168,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_UpdateInvalidVolume_ShouldFail()
+        public void BookService_UpdateInvalidVolume_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Volume = 0;
@@ -208,7 +208,7 @@ namespace DonaRosangela.App.Tests.Features.Books
         }
 
         [Test]
-        public void BookService_DeleteInvalidId_ShouldFail()
+        public void BookService_DeleteInvalidId_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Id = 0;
