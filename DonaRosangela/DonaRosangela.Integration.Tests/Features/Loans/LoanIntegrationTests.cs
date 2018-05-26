@@ -47,7 +47,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_AddInvalidClient_ShouldException()
+        public void LoanIntegration_AddInvalidClient_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _loan = ObjectMother.GetLoanInvalidClient(_book);
@@ -58,7 +58,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_AddInvalidDevolution_ShouldException()
+        public void LoanIntegration_AddInvalidDevolution_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _loan = ObjectMother.GetLoanInvalidDevolution(_book);
@@ -69,7 +69,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_AddUnavailableBook_ShouldException()
+        public void LoanIntegration_AddUnavailableBook_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Availability = false;
@@ -92,7 +92,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_GetInvalidId_ShouldException()
+        public void LoanIntegration_GetInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 
@@ -126,7 +126,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_UpdateInvalidClient_ShouldException()
+        public void LoanIntegration_UpdateInvalidClient_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _loan = ObjectMother.GetLoanInvalidClient(_book);
@@ -137,7 +137,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_UpdateInvalidDevolution_ShouldException()
+        public void LoanIntegration_UpdateInvalidDevolution_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _loan = ObjectMother.GetLoanInvalidDevolution(_book);
@@ -148,7 +148,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_UpdateUnavailableBook_ShouldException()
+        public void LoanIntegration_UpdateUnavailableBook_ShouldBeException()
         {
             _book = ObjectMother.GetBook();
             _book.Availability = false;
@@ -160,7 +160,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_UpdateInvalidId_ShouldException()
+        public void LoanIntegration_UpdateInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 
@@ -181,7 +181,7 @@ namespace DonaRosangela.Integration.Tests.Features.Loans
         }
 
         [Test]
-        public void LoanIntegration_DeleteInvalidId_ShouldException()
+        public void LoanIntegration_DeleteInvalidId_ShouldBeException()
         {
             _loan.Id = 0;
 
