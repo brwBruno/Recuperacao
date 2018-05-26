@@ -35,6 +35,7 @@ namespace DonaRosangela.Domain.Tests.Features.Loans
             _loan = ObjectMother.GetLoan(_book.Object);
 
             _loan.Validate();
+            _loan.CalculateFine();
 
             _loan.Id.Should().Be(1);
             _loan.LoanBook.Should().NotBeNull();

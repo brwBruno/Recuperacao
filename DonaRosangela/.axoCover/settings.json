@@ -6,7 +6,7 @@
   "IsRedirectingFrameworkAssemblies": true,
   "TestSettings": "",
   "ExcludeAttributes": "System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute",
-  "ExcludeFiles": "*Db*;*ObjectMother*;",
+  "ExcludeFiles": "*Db*;*ObjectMother*;*BaseSql*;*Exception*;",
   "ExcludeDirectories": "",
   "Filters": "+[*]*",
   "IsIncludingSolutionAssemblies": true,
